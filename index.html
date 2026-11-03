@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tracy Henderson — UGC Creator, Canada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#211A14;
+  --sand:#F1E7D4;
+  --sand-dim:#e7d9bd;
+  --gold:#D9A441;
+  --clay:#9A4B36;
+  --moss:#5F6B4C;
+  --serif:'Fraunces', serif;
+  --sans:'Work Sans', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--sand);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:32px;
+  padding:20px 5vw;
+  background:rgba(33,26,20,.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(241,231,212,.08);
+}
+.nav__links{display:flex; gap:30px;}
+.nav__links a{
+  position:relative;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.03em;
+  color:var(--sand);
+  padding-bottom:3px;
+}
+.nav__links a::after{
+  content:'';
+  position:absolute; left:0; bottom:-3px;
+  width:0; height:1px;
+  background:var(--gold);
+  transition:width .3s ease;
+}
+.nav__links a:hover::after,
+.nav__links a.is-active::after{width:100%;}
+.nav__links a.is-active{color:var(--gold);}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:.95fr 1.25fr;
+  align-items:center;
+  gap:40px;
+  padding:150px 5vw 70px;
+  background:
+    radial-gradient(90% 60% at 85% 0%, rgba(217,164,65,.16), transparent 55%),
+    var(--ink);
+}
+.hero__grain{
+  position:absolute; inset:0;
+  z-index:0;
+  opacity:.3;
+  mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px);
+  background-size:3px 3px;
+  pointer-events:none;
+}
+.hero__content{position:relative; z-index:2; color:var(--sand);}
+.hero__eyebrow{font-size:14px; font-weight:500; letter-spacing:.03em; opacity:.9; margin-bottom:6px;}
+.hero__title{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(44px, 6.2vw, 92px);
+  line-height:.98;
+  letter-spacing:-.01em;
+}
+.hero__role{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(17px, 1.8vw, 22px);
+  color:var(--gold);
+  margin-top:22px;
+}
+.hero__sub{max-width:460px; margin-top:20px; font-size:15px; line-height:1.6; color:var(--sand-dim);}
+.hero__cta{
+  display:inline-block;
+  margin-top:30px;
+  font-size:13px;
+  font-weight:600;
+  padding:13px 28px;
+  border-radius:100px;
+  background:var(--gold);
+  color:var(--ink);
+  transition:transform .25s ease, background .25s ease;
+}
+.hero__cta:hover{transform:translateY(-2px); background:var(--sand);}
+
+/* ---------- HERO VIDEO CARD (right side) ---------- */
+.hero__media{
+  position:relative;
+  z-index:2;
+  justify-self:center;
+  width:100%;
+  max-width:640px;
+  height:88svh;
+  max-height:820px;
+}
+.hero__media-frame{
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:22px;
+  overflow:hidden;
+  background:#1a120d;
+  box-shadow:0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(241,231,212,.08);
+}
+.hero__media-frame video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  transform:scale(1.12);
+  transform-origin:center 35%;
+  filter:saturate(1.08) contrast(1.03);
+}
+.hero__media-frame::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(10,7,5,.5) 0%, transparent 28%);
+  pointer-events:none;
+}
+@media (max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    padding:130px 5vw 0;
+    text-align:left;
+  }
+  .hero__media{
+    max-width:none;
+    height:60svh;
+    justify-self:stretch;
+  }
+  .hero__media-frame{border-radius:22px;}
+}
+
+/* ---------- SECTION SHELL ---------- */
+section{padding:100px 5vw; scroll-margin-top:80px;}
+.section__head{
+  display:flex; justify-content:space-between; align-items:flex-end;
+  gap:24px; margin-bottom:44px; flex-wrap:wrap;
+}
+.section__head h2{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(38px, 5.5vw, 64px);
+  max-width:600px;
+}
+.section__head p{max-width:320px; font-size:14px; line-height:1.6; color:#5b5145;}
+.page-hero{background:var(--ink); color:var(--sand);}
+.page-hero .section__head p{color:#c9bda3;}
+
+/* ---------- WORK / FILTERS ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px;}
+.filter{
+  font-family:var(--sans);
+  font-size:13px; font-weight:500;
+  padding:9px 18px;
+  border-radius:100px;
+  border:1px solid rgba(241,231,212,.3);
+  background:transparent;
+  color:var(--sand-dim);
+  cursor:pointer;
+  transition:background .25s ease, color .25s ease, border-color .25s ease;
+}
+.filter:hover{border-color:var(--gold); color:var(--sand);}
+.filter.is-active{background:var(--gold); border-color:var(--gold); color:var(--ink);}
+
+.groups{display:flex; flex-direction:column; gap:56px;}
+.group{display:grid; grid-template-columns:minmax(220px,.7fr) minmax(0,1.6fr); gap:40px; align-items:center; padding-top:40px; border-top:1px solid rgba(241,231,212,.14);}
+.group.is-hidden{display:none;}
+.group__num{font-family:var(--serif); font-style:italic; color:var(--gold); font-size:15px;}
+.group__info h3{font-family:var(--serif); font-weight:600; font-size:clamp(26px,3.4vw,38px); margin:8px 0 12px; color:var(--sand);}
+.group__info p{font-size:14px; line-height:1.7; color:#c9bda3; max-width:340px;}
+.pair{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:860px;}
+.tile{margin:0; transition:transform .35s ease;}
+.tile:hover{transform:translateY(-4px);}
+.tile__frame{position:relative; aspect-ratio:9/16; border-radius:10px; overflow:hidden; background:#12100d;}
+.tile--empty .tile__frame{display:flex; align-items:center; justify-content:center; text-align:center; border:1px dashed rgba(241,231,212,.3); background:rgba(241,231,212,.04); color:#c9bda3; font-size:13px; line-height:1.5;}
+.tile--empty:hover{transform:none;}
+.tile__label{display:flex; flex-direction:column; gap:3px; padding:12px 2px 0;}
+.tile__label strong{font-size:14px; font-weight:600; color:var(--sand);}
+.tile__video{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000;}
+.tile__play{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:52px; height:52px;
+  border-radius:50%;
+  border:1px solid rgba(241,231,212,.55);
+  background:rgba(20,14,10,.5);
+  color:var(--sand);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+  cursor:pointer;
+  backdrop-filter:blur(3px);
+  transition:opacity .2s ease, transform .2s ease;
+  z-index:2;
+}
+.tile__play:hover{transform:translate(-50%,-50%) scale(1.06);}
+.tile--video.is-playing .tile__play{opacity:0; pointer-events:none;}
+
+/* ---------- ABOUT ---------- */
+.about{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:64px;
+  align-items:start;
+}
+.about h2{margin-top:0; line-height:1.1;}
+.about__frame{position:relative; aspect-ratio:4/5; border-radius:6px; overflow:hidden; background:linear-gradient(160deg,#e3c088,#9a4b36 60%, #211a14);}
+.about__frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%;}
+.about__frame-tag{position:absolute; bottom:14px; left:14px; font-size:11px; color:var(--sand); background:rgba(33,26,20,.5); padding:5px 10px; border-radius:100px;}
+.about h2{font-family:var(--serif); font-weight:600; font-size:clamp(30px,4vw,44px); margin-bottom:18px; max-width:460px;}
+.about p{font-size:15px; line-height:1.75; color:#4a4234; max-width:480px; margin-bottom:16px;}
+.about__meta{display:flex; gap:32px; margin-top:28px; flex-wrap:wrap;}
+.about__meta div{font-size:13px; color:#6b5f4c;}
+.about__meta strong{display:block; font-family:var(--serif); font-size:20px; color:var(--ink); font-weight:600;}
+
+/* ---------- TESTIMONIALS ---------- */
+.brand-grid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:30px 48px; text-align:left;}
+.brand-grid li{font-family:var(--serif); font-weight:600; font-size:21px; line-height:1.3; color:var(--ink);}
+@media (max-width:860px){.brand-grid{grid-template-columns:repeat(2,1fr); gap:24px 24px;} .brand-grid li{font-size:18px;}}
+.testimonials-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;}
+.t-card{background:var(--sand); border:1px solid rgba(33,26,20,.12); border-radius:8px; padding:32px;}
+.t-card__brand{font-family:var(--serif); font-weight:700; font-size:20px; margin-bottom:16px;}
+.t-card__quote{font-size:15px; line-height:1.7; color:#3a3226; margin-bottom:18px;}
+.t-card__stars{color:var(--gold); letter-spacing:2px; font-size:14px;}
+
+/* ---------- CONTACT ---------- */
+.contact-section{background:var(--clay); color:var(--sand); text-align:center; padding:130px 5vw;}
+.contact-section h2{font-family:var(--serif); font-weight:700; font-size:clamp(40px,6.5vw,68px); max-width:680px; margin:0 auto 20px;}
+.contact-section > p{max-width:440px; margin:0 auto 46px; font-size:15px; color:#f0ded0;}
+.contact-list{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+.contact-list a{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--sans); font-weight:600; font-size:14px;
+  padding:15px 28px; border-radius:100px;
+  background:var(--sand); color:var(--ink);
+  transition:transform .25s ease, background .25s ease;
+}
+.contact-list a:hover{transform:translateY(-2px); background:var(--gold);}
+.contact-list a.ghost{background:transparent; border:1px solid rgba(241,231,212,.5); color:var(--sand);}
+.contact-list a.ghost:hover{background:rgba(241,231,212,.12);}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--ink); color:#a89b83;
+  padding:26px 5vw;
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:12px; flex-wrap:wrap; gap:10px;
+}
+footer .fmark{font-family:var(--serif); font-style:italic; color:var(--sand); font-size:15px;}
+
+@media (max-width:860px){
+  .group{grid-template-columns:1fr; gap:22px;}
+  .group__info p{max-width:none;}
+  .pair{gap:10px; grid-template-columns:repeat(2,1fr);}
+  .about{grid-template-columns:1fr; gap:32px;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .nav__links{gap:18px; font-size:12px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important; scroll-behavior:auto !important; animation:none !important;}
+}
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__links">
+      <a href="#about" data-nav="about">About</a>
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#testimonials" data-nav="testimonials">Brands</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <header class="hero" id="home">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Content Creator</p>
+      <h1 class="hero__title">Tracy Henderson</h1>
+      <p class="hero__role">UGC Creator &middot; Canada</p>
+      <p class="hero__sub">I'm a lifestyle and beauty content creator passionate about creating authentic, relatable, and engaging content. I specialize in product reviews, unboxings, and everyday lifestyle content that connects with real people. My goal is to help brands showcase their products through natural, creative storytelling that builds trust, sparks interest, and inspires action.</p>
+      <a class="hero__cta" href="#work">See my content</a>
+    </div>
+
+    <div class="hero__media">
+      <div class="hero__media-frame">
+        <video id="heroClipVideo" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+          <source src="hero.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="hero__grain"></div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section__head">
+      <h2>About me</h2>
+    </div>
+
+    <div class="about">
+      <div class="about__frame">
+        <img src="about-photo.jpg" alt="Tracy Henderson">
+      </div>
+      <div>
+        <h2>Hi, I'm Tracy, you might know me as Kata.</h2>
+        <p>I'm a Canadian creator with Dominican roots, and my content lives between two cultures and two languages. My audience is a real mix of English and Spanish speakers who show up for the same thing: honest, relatable content they can trust, not a hard sell.</p>
+        <p>I started out unboxing and reviewing PR packages on TikTok, and it has grown into full UGC: product reviews, unboxings and everyday lifestyle content that feels like a recommendation from a friend, not an ad.</p>
+        <p>Whether it's skincare, food, fashion, fitness or travel, I keep it natural and creative, so brands can show their products to real people in a way that builds trust and sparks enough interest to act.</p>
+        <div class="about__meta">
+          <div><strong>EN / ES</strong>bilingual audience</div>
+          <div><strong>Canada</strong>+ Dominican Republic roots</div>
+          <div><strong>UGC + Lifestyle</strong>content focus</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="page-hero">
+    <div class="section__head">
+      <h2 style="font-weight:700;">My Content</h2>
+      <p>A running collection of paid and organic pieces — filter by category to see more.</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Content categories">
+      <button class="filter is-active" data-filter="all">All</button>
+      <button class="filter" data-filter="travel">Travel &amp; Adventure</button>
+      <button class="filter" data-filter="beauty">Beauty &amp; Skincare</button>
+      <button class="filter" data-filter="pr">PR &amp; Brand Gifts</button>
+      <button class="filter" data-filter="fashion">Fashion &amp; Lifestyle</button>
+      <button class="filter" data-filter="food">Food &amp; Drink</button>
+      <button class="filter" data-filter="fitness">Fitness &amp; Wellness</button>
+    </div>
+
+    <div class="groups" id="grid">
+      <div class="group" data-cat="travel">
+        <div class="group__info">
+          <span class="group__num">01</span>
+          <h3>Travel &amp; Adventure</h3>
+          <p>Costa Rica, filmed as a series — real places, real itineraries.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-04.jpg">
+                <source src="clip-04.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Day 1 in Costa Rica</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-18.jpg">
+                <source src="clip-18.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>San José, Costa Rica</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-17.jpg">
+                <source src="clip-17.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Costa Rica Highlights</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="group" data-cat="beauty">
+        <div class="group__info">
+          <span class="group__num">02</span>
+          <h3>Beauty &amp; Skincare</h3>
+          <p>Honest reviews, PR unboxings and first-use reactions.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-22.jpg">
+                <source src="clip-22.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Abib Collagen Eye Patch</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-25.jpg">
+                <source src="clip-25.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>L&rsquo;Or&eacute;al Glass Skin Mask</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-24.jpg">
+                <source src="clip-24.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>DIY Retinal Capsule Cream</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="group" data-cat="pr">
+        <div class="group__info">
+          <span class="group__num">03</span>
+          <h3>PR &amp; Brand Gifts</h3>
+          <p>Packages sent by brands — unboxed, tested and reviewed on camera.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-26.jpg">
+                <source src="clip-26.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>L&rsquo;Or&eacute;al Creator Program PR Box</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-27.jpg">
+                <source src="clip-27.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Sephora Haul (en Espa&ntilde;ol)</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-28.jpg">
+                <source src="clip-28.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>How I Started Getting PR (en Espa&ntilde;ol)</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="group" data-cat="fashion">
+        <div class="group__info">
+          <span class="group__num">04</span>
+          <h3>Fashion &amp; Lifestyle</h3>
+          <p>Transformations, try-ons and themed looks with personality.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-20.jpg">
+                <source src="clip-20.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Box Braids Transformation</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-10.jpg">
+                <source src="clip-10.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Green Print Dress</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-15.jpg">
+                <source src="clip-15.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Spider-Man: Brand New Day Look</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="group" data-cat="food">
+        <div class="group__info">
+          <span class="group__num">05</span>
+          <h3>Food &amp; Drink</h3>
+          <p>Restaurants and cafés — taste, atmosphere, the details people ask about.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-21.jpg">
+                <source src="clip-21.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Ellipsis Café, Vancouver</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-14.jpg">
+                <source src="clip-14.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Breka Bakery &amp; Café</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-16.jpg">
+                <source src="clip-16.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Par4 Golf &amp; Social</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="group" data-cat="fitness">
+        <div class="group__info">
+          <span class="group__num">06</span>
+          <h3>Fitness &amp; Wellness</h3>
+          <p>Gym days and the relatable side of staying consistent.</p>
+        </div>
+        <div class="pair">
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-30.jpg">
+                <source src="clip-30.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Lower Body Workout Routine</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-09.jpg">
+                <source src="clip-09.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Gym Session</strong></figcaption>
+          </figure>
+          <figure class="tile tile--video">
+            <div class="tile__frame">
+              <video class="tile__video" playsinline preload="metadata" poster="poster-29.jpg">
+                <source src="clip-29.mp4" type="video/mp4">
+              </video>
+              <button class="tile__play" type="button" aria-label="Play video">&#9654;</button>
+            </div>
+            <figcaption class="tile__label"><strong>Leg Day Workout</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section id="testimonials" style="padding-bottom:40px;">
+    <div class="section__head">
+      <h2 style="max-width:none; white-space:nowrap; font-size:clamp(25px,5.5vw,64px);">Brands I&rsquo;ve worked with</h2>
+    </div>
+    <ul class="brand-grid">
+      <li>L&rsquo;Or&eacute;al</li>
+      <li>Lanc&ocirc;me</li>
+      <li>Sephora Canada</li>
+      <li>CeraVe</li>
+      <li>Garnier</li>
+      <li>Kodak</li>
+      <li>Temu</li>
+      <li>IL MAKIAGE</li>
+      <li>Medicube</li>
+      <li>YesStyle</li>
+      <li>Ipsy</li>
+      <li>Anua</li>
+      <li>Torriden</li>
+      <li>CLIO</li>
+      <li>Mary&amp;May</li>
+      <li>Haruharu Wonder</li>
+      <li>Dasique</li>
+      <li>Zeroid</li>
+      <li>Kiyoko Beauty</li>
+      <li>Bubble Skincare</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <h2>Let's work together.</h2>
+    <p>Open to UGC, paid collaborations and PR partnerships. Email me or find me on any of the channels below.</p>
+    <div class="contact-list">
+      <a href="mailto:yourdailygirl04@gmail.com">yourdailygirl04@gmail.com</a>
+      <a class="ghost" href="https://www.tiktok.com/@thisisdaily04" target="_blank" rel="noopener">TikTok @thisisdaily04</a>
+      <a class="ghost" href="https://www.youtube.com/@KetlyneHenderson" target="_blank" rel="noopener">YouTube</a>
+      <a class="ghost" href="https://linktr.ee/yourdailygirl04" target="_blank" rel="noopener">Linktree</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="fmark">Tracy Henderson</span>
+    <span>© 2026 · TikTok @thisisdaily04</span>
+  </footer>
+
+<script>
+  // video tiles: click to play/pause, pause others when one plays
+  document.querySelectorAll('.tile--video').forEach(tile => {
+    const vid = tile.querySelector('.tile__video');
+    const btn = tile.querySelector('.tile__play');
+    const playThis = () => {
+      document.querySelectorAll('.tile--video video').forEach(v => {
+        if (v !== vid) { v.pause(); v.closest('.tile--video').classList.remove('is-playing'); }
+      });
+      vid.play();
+      tile.classList.add('is-playing');
+    };
+    btn.addEventListener('click', playThis);
+    vid.addEventListener('click', () => {
+      if (vid.paused) { playThis(); } else { vid.pause(); tile.classList.remove('is-playing'); }
+    });
+    vid.addEventListener('pause', () => tile.classList.remove('is-playing'));
+    vid.addEventListener('ended', () => tile.classList.remove('is-playing'));
+  });
+
+  // filter tiles
+  const filters = document.querySelectorAll('.filter');
+  const tiles = document.querySelectorAll('.group');
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const cat = btn.dataset.filter;
+      tiles.forEach(tile => {
+        const show = cat === 'all' || tile.dataset.cat === cat;
+        tile.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+
+  // highlight active nav link on scroll
+  const navLinks = document.querySelectorAll('.nav__links a');
+  const sections = ['about','work','testimonials','contact'].map(id => document.getElementById(id));
+  const setActive = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if(rect.top <= 120) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('is-active', link.dataset.nav === current);
+    });
+  };
+  window.addEventListener('scroll', setActive, {passive:true});
+  setActive();
+</script>
+
+
+</body>
+</html>
